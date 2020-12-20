@@ -10,22 +10,22 @@ class App extends Component {
     super();
     this.state = {
       robots: [],
-      searchfield: ''
+      searchfield: '',
     };
   }
 
   componentDidMount() {
     fetch('https://jsonplaceholder.typicode.com/users')
-      .then(response => response.json())
-      .then(user => this.setState({ robots: user }));
+      .then((response) => response.json())
+      .then((user) => this.setState({ robots: user }));
   }
 
-  onSearchChange = event => {
+  onSearchChange = (event) => {
     this.setState({ searchfield: event.target.value });
   };
 
   render() {
-    const filterRobot = this.state.robots.filter(robots => {
+    const filterRobot = this.state.robots.filter((robots) => {
       return robots.name
         .toLowerCase()
         .includes(this.state.searchfield.toLowerCase());
@@ -34,7 +34,7 @@ class App extends Component {
       <h1>loading</h1>
     ) : (
       <div className="tc">
-        <h1 className="f1"> Robo friends</h1>
+        <h1 className="f1"> Robo friends !</h1>
         <SearchBox searchChange={this.onSearchChange} />
         <Scroll>
           <ErrorBoundry>
